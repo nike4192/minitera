@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<style>
+			:root {
+				--main-background-color: white;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			table td {
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<span> {{ context.mode ? [context.mode, context.number].join(' ') : 'Not selected mode' }} </span>
+			<div>
+				<input type="range" v-model="blockSize" min="100" max="500">
+				<span>{{ blockSize }}</span>
+			</div>
+			<hr>
+			<macros-viewer
+				ref="macrosViewer"
+				:context="context"
+				:macros="macros"
+				:block-size="blockSize"
+				:block-draw-params="blockDrawParams">
+			</macros-viewer>
+			<debugger-session
+				ref="debuggerSession"
+				:macros="macros">
+			</debugger-session>
+		</div>
+		<script src='./public/js/main.bundle.js'></script>
+	</body>
+</html>
