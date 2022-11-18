@@ -9,34 +9,22 @@
 			:root {
 				--main-background-color: white;
 			}
-			table {
-				border-collapse: collapse;
+
+			html, body {
+				margin: 0;
 			}
-			table td {
-				border: 1px solid;
+
+			#app {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="app">
-			<span> {{ context.mode ? [context.mode, context.number].join(' ') : 'Not selected mode' }} </span>
-			<div>
-				<input type="range" v-model="blockSize" min="100" max="500">
-				<span>{{ blockSize }}</span>
-			</div>
-			<hr>
-			<macros-viewer
-				ref="macrosViewer"
-				:context="context"
-				:macros="macros"
-				:block-size="blockSize"
-				:block-draw-params="blockDrawParams">
-			</macros-viewer>
-			<debugger-session
-				ref="debuggerSession"
-				:macros="macros">
-			</debugger-session>
-		</div>
-		<script src='./public/js/main.bundle.js'></script>
+		<div id="app"></div>
+		<script src='dist/main.bundle.js'></script>
 	</body>
 </html>
